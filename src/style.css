@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans&display=swap');
 *{
     font-family: 'Sofia Sans', sans-serif;
+    margin: 0;
 }
 
 .reg-log-ctn{
@@ -27,6 +28,7 @@ body{
 }
 
 .title-ctn{
+    min-width: 100%;
     padding: 20px;
     letter-spacing: 3px;
     box-shadow: 1px 2px 2px gray;
@@ -41,10 +43,13 @@ body{
 
 .latest-ctn{
     width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    overflow-y: scroll;
 }
 
 .side-ctn{
-    width: 150px;
+    min-width: 150px;
     align-self: center;
 }
 
@@ -81,4 +86,72 @@ body{
     color: rgb(130, 128, 122);
     text-decoration: none;
     font-size: 1em;
+}
+
+.blog-ctn{
+    padding: 10px;
+    border-radius: 5px;
+    background-color:beige;
+    margin: 20px 0px;
+}
+
+.date{
+    font-style: italic;
+}
+
+.question{
+    padding: 5px;
+}
+
+.sec-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.links{
+    text-decoration: none;
+    color: black;
+}
+
+.links:hover{
+    color: gray;
+    transition: 1s;
+}
+
+.sec-3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.num-ctn{
+    display: flex;
+    align-items: center;
+}
+
+.blog{
+    max-width: 600px;
+    background-color: beige;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.comment{
+    background-color: white;
+}
+
+.blog-page{
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.blog-text{
+    padding: 5px;
+}
+
+.comments{
+    overflow-y: scroll;
+    max-height: 400px;
+    margin: 20px 0px;
 }

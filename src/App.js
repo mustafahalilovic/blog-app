@@ -9,7 +9,7 @@ import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
   const setAuth = (valueToSet)=>{
     setIsAuthenticated(valueToSet);
@@ -17,8 +17,19 @@ export default function App() {
 
   const isAuth = async()=>{
     try {
-        //TODO
-        // verify is user is authenticated and set state by that
+       
+      const response = await fetch('http://localhost:5000/auth/verify', {
+        method: 'GET',
+        headers: {
+          token: localStorage.token
+        }
+      });
+
+      const parsedResponse = await response.json();
+
+      parsedResponse === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+        
+
     } catch (error) {
         console.error(error.message);
     }
@@ -34,7 +45,7 @@ export default function App() {
         <Routes>
             <Route exact path="/" element={!isAuthenticated ? <LoginPage setAuth={setAuth} /> : <Navigate to="/dashboard" /> } />
             <Route exact path="/register" element={!isAuthenticated ? <RegisterPage setAuth={setAuth} /> : <Navigate to="/dashboard" /> } />
-            <Route exact path="/dashboard/*" element={isAuthenticated ? <DashboardPage setAuth={setAuth} /> : <Navigate to="/login" /> } />
+            <Route exact path="/dashboard/*" element={isAuthenticated ? <DashboardPage setAuth={setAuth} /> : <Navigate to="/" /> } />
          </Routes>
     </div>
   )

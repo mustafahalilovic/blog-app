@@ -25,7 +25,6 @@ export default function Blog({blog}) {
               </span>
               <span className='num-ctn'>
               <CgComment />
-                {blog.comments.length}
               </span>
             </div>
             <Link className='links'>Comments</Link>

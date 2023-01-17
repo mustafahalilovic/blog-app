@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans&display=swap');
 *{
     font-family: 'Sofia Sans', sans-serif;
+    margin: 0;
 }
 
 .reg-log-ctn{
@@ -27,6 +28,7 @@ body{
 }
 
 .title-ctn{
+    min-width: 100%;
     padding: 20px;
     letter-spacing: 3px;
     box-shadow: 1px 2px 2px gray;
@@ -36,22 +38,24 @@ body{
 .content{
     display: flex;
     height: 88vh;
-    padding: 10px;
 }
 
 .latest-ctn{
     width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    overflow-y: scroll;
 }
 
 .side-ctn{
-    width: 150px;
+    min-width: 150px;
     align-self: center;
 }
 
 .link{
     width: 100%;
-    height: 200px;
-    border: 1px solid rgb(232, 231, 225);
+    height: 230px;
+    border-bottom: 1px solid rgb(232, 231, 225);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,4 +85,99 @@ body{
     color: rgb(130, 128, 122);
     text-decoration: none;
     font-size: 1em;
+}
+
+.blog-ctn{
+    padding: 10px;
+    border-radius: 5px;
+    background-color:beige;
+    margin: 20px 0px;
+}
+
+.date{
+    font-style: italic;
+}
+
+.question{
+    padding: 5px;
+}
+
+.sec-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.links{
+    text-decoration: none;
+    color: black;
+}
+
+.links:hover{
+    color: gray;
+    transition: 1s;
+}
+
+.sec-3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.num-ctn{
+    display: flex;
+    align-items: center;
+}
+
+.blog{
+    max-width: 600px;
+    background-color: beige;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.comment{
+    background-color: white;
+}
+
+.blog-page{
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.blog-text{
+    padding: 5px;
+}
+
+.comments{
+    overflow-y: scroll;
+    max-height: 400px;
+    margin: 20px 0px;
+}
+
+
+.user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+.user span{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.user button{
+    border-radius: 5px;
+    background-color: gray;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+}
+
+.user button:hover{
+    transition: 0.2s;
+    color: gray;
+    background-color: black;
 }

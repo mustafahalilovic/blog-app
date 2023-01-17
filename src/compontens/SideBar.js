@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {SiMicrodotblog} from 'react-icons/si';
 import {BsFillEnvelopeFill} from 'react-icons/bs';
-import {MdOutlineLibraryAdd} from 'react-icons/md'
+import {MdOutlineLibraryAdd} from 'react-icons/md';
+
 
 
 export default function SideBar() {

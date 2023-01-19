@@ -70,7 +70,11 @@ router.post('/login', validateInfo, async(req,res)=>{
 
         // return jwt token
         const token = jwtGenerator(user.rows[0].id);
-        res.json({token});
+        const name = user.rows[0].user_name;
+        res.json({
+            token,
+            name
+        });
         
     } catch (error) {
         console.log(error.message);

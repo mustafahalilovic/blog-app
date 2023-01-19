@@ -1,34 +1,45 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
-    addDislike,
-    addLike,
     updateBlog,
     removeBlog,
     addBlog,
-    addCommentLike,
-    addCommentDislike,
-    addComment,
-    removeComment,
-    updateComment,
     blogsReducer
 } from './slices/blogsSlice';
 
+import {
+    addComment,
+    removeComment,
+    updateComment,
+    commentsReducer
+} from './slices/commentsSlice';
+
+import {
+    addName,
+    nameReducer
+} from './slices/nameSlice';
+
+import { 
+    addReaction, 
+    reactionReducer 
+} from "./slices/reactionSlice";
+
 const store = configureStore({
     reducer: {
-        blogs: blogsReducer
+        blogs: blogsReducer,
+        name: nameReducer,
+        comments: commentsReducer,
+        reaction: reactionReducer
     }
 });
 
 export {
-    addDislike,
-    addLike,
     updateBlog,
     removeBlog,
     addBlog,
-    addCommentLike,
-    addCommentDislike,
     addComment,
     removeComment,
     updateComment,
+    addName,
+    addReaction,
     store
 };

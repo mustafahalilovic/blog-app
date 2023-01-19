@@ -1,24 +1,64 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Routes,
   Route
 } from 'react-router-dom';
 import SideBar from '../compontens/SideBar';
 import Title from '../compontens/Title';
-import LatestBlogsPage from './LatestBlogsPage';
-import NewBlogPage from './NewBlogPage';
-import MyBlogsPage from './MyBlogsPage';
-import BlogPage from './BlogPage';
-import { useSelector, useDispatch } from 'react-redux';
-import {addBlog, removeBlog} from '../store';
+import LatestComponent from '../compontens/LatestComponent';
+import NewBlogComponent from '../compontens/NewBlogComponent';
+import MyBlogsComponent from '../compontens/MyBlogsComponent';
+import BlogComponent from '../compontens/BlogComponent';
 import {ImProfile} from 'react-icons/im';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBlog } from '../store';
 
 export default function DashboardPage({setAuth}) {
   const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
 
-  const blogs = useSelector((state)=>{
-    return state.blogs;
+  useEffect(()=>{
+    getProfile();
+    fetchBlogs();
   });
+
+  const fetchBlogs = async ()=>{
+    try {
+      
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/blogs/allblogs`, {
+        method: 'GET',
+        headers: {
+          token: localStorage.token
+        }
+      });
+
+      const parsedResponse = await response.json();
+
+      dispatch(addBlog(parsedResponse));
+
+    } catch (error) {
+        console.log(error.message);
+    }
+  }
+
+  const getProfile = async()=>{
+    try {
+  
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/user/username`,{
+        method: 'GET',
+        headers: {
+          token: localStorage.token
+        }
+      });
+  
+      const parsedResponse = await response.json();
+
+      setUsername(parsedResponse.user_name);
+      
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   const handleLogout = (e)=>{
     e.preventDefault();
@@ -30,16 +70,16 @@ export default function DashboardPage({setAuth}) {
     <div className='dash-ctn'>
       <Title />
       <div className='user'>
-          <span> <ImProfile /> Mustafa</span>
+          <span> <ImProfile /> {username}</span>
           <button onClick={handleLogout}>logout</button>
         </div>
       <div className='content'>
         <SideBar />
         <Routes>
-          <Route exact path="/" element={<LatestBlogsPage />} />
-          <Route exact path="/myblogs" element={<MyBlogsPage />} />
-          <Route exact path="/newblog" element={<NewBlogPage />} />
-          <Route exact path="/blog/:id" element={<BlogPage />} />
+          <Route exact path="/" element={<LatestComponent />} />
+          <Route exact path="/myblogs" element={<MyBlogsComponent username={username} />} />
+          <Route exact path="/newblog" element={<NewBlogComponent username={username} />} />
+          <Route exact path="/blog/:id" element={<BlogComponent />} />
          </Routes>
       </div>
     </div>

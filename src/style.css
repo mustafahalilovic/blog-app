@@ -181,3 +181,28 @@ body{
     color: gray;
     background-color: black;
 }
+
+.portal-ctn{
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(243, 235, 235, 0.9);
+}
+
+.portal-bd{
+    position: fixed;
+    inset: 250px 150px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.portal-ch{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+.overflow-hidden{
+    overflow: hidden;
+}

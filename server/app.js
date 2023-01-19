@@ -15,6 +15,13 @@ app.use(cors());
 // register and login routes
 app.use('/auth', require('./routes/jwtAuth'));
 
+// blogs route
+app.use('/blogs', require('./routes/blogs'));
+
+// user route
+app.use('/user', require('./routes/user'));
+
+
 
 app.listen(PORT, ()=>{
     console.log(`Server started at port ${PORT}`);

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addName } from '../store';
 
 export default function LoginPage({setAuth}) {
+  const dispatch = useDispatch();
   const [inputs, setInptus] = useState({
     email: '',
     password: ''
@@ -22,7 +25,7 @@ export default function LoginPage({setAuth}) {
       password
     }
 
-    const response = await fetch('http://localhost:5000/auth/login',{
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/auth/login`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -33,6 +36,7 @@ export default function LoginPage({setAuth}) {
     const parsedResponse = await response.json();
 
     localStorage.setItem('token', parsedResponse.token);
+    dispatch(addName(parsedResponse.name));
     setAuth(true);
 
   }

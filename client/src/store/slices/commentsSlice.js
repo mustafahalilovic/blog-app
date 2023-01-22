@@ -3,34 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const commentsSlice = createSlice({
     name: 'comments',
     initialState: {
-        /*
-        comments: [
-            {
-                    id: 0,
-                    blog_id: 0,
-                    comUsername: '',
-                    comment: '',
-                    upvotes: 0,
-                    downvotes: 0,
-                    comment_date: ''
-            }
-        ]
-        */
+        comments: []
     },
     reducers: {
         addComment(state,action){
             // assumption:
-            // action.payload === {blogId, {comment object}}
-            const {
-                blogId,
-                commentObject
-            } = action.payload;
-        
-            state.map((blog)=>{
-                if(blog.id === blogId){
-                    blog.comments.push(commentObject);
-                }
-            })
+            // action.payload === { comment object }
+            state.comments = action.payload;
         },
         removeComment(state,action){
             // assumption:

@@ -1,5 +1,3 @@
-CREATE DATABASE blogapp;
-
 -- uuid_generate_v4() extension
 -- create extension if not exists "uuid-ossp";
 CREATE TABLE users(

@@ -9,7 +9,7 @@ import {MdOutlineLibraryAdd} from 'react-icons/md';
 export default function SideBar() {
   return (
     <div className='side-ctn'>
-        <Link to="/dashboard" className='link latest-link'>
+        <Link to="/dashboard/" className='link latest-link'>
            <SiMicrodotblog /> 
         </Link>
         <Link to="/dashboard/myblogs" className='link blogs-link'>

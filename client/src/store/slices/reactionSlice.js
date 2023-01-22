@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const reactionSlice = createSlice({
     name: 'reaction',
     initialState: {
-
+        
     },
     reducers: {
         addReaction(state, action){

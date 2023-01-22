@@ -26,7 +26,7 @@ export default function Blog({blog, reactions, children}) {
     try {
 
       const body = {
-        blog_id: blog.id,
+        blog_comment_id: blog.id,
         reaction_type,
         purpose
       } 
@@ -78,7 +78,7 @@ export default function Blog({blog, reactions, children}) {
               </span>
             </div>
             <div style={{display:'flex', gap:'10px', alignItems:'center'}}>
-              <Link className='links'>Comments</Link>
+              <Link to={`/dashboard/blog/${blog.id}`} className='links'>Comments</Link>
               {children && children}
             </div>
           </div>

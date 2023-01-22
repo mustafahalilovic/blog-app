@@ -22,6 +22,26 @@ export default function DashboardPage({setAuth}) {
     fetchBlogs();
   });
 
+  const getProfile = async()=>{
+    try {
+  
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/user/username`,{
+        method: 'GET',
+        headers: {
+          token: localStorage.token
+        }
+      });
+  
+      const parsedResponse = await response.json();
+
+      setUsername(parsedResponse.user_name);
+      
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+
   const fetchBlogs = async ()=>{
     try {
       
@@ -41,24 +61,7 @@ export default function DashboardPage({setAuth}) {
     }
   }
 
-  const getProfile = async()=>{
-    try {
   
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/user/username`,{
-        method: 'GET',
-        headers: {
-          token: localStorage.token
-        }
-      });
-  
-      const parsedResponse = await response.json();
-
-      setUsername(parsedResponse.user_name);
-      
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
 
   const handleLogout = (e)=>{
     e.preventDefault();
@@ -79,7 +82,7 @@ export default function DashboardPage({setAuth}) {
           <Route exact path="/" element={<LatestComponent />} />
           <Route exact path="/myblogs" element={<MyBlogsComponent username={username} />} />
           <Route exact path="/newblog" element={<NewBlogComponent username={username} />} />
-          <Route exact path="/blog/:id" element={<BlogComponent />} />
+          <Route exact path="/blog/:id" element={<BlogComponent name={username} />} />
          </Routes>
       </div>
     </div>

@@ -45,7 +45,6 @@ export default function NewBlogComponent({username}) {
 
   const handleSubmit = (e)=>{
     addData(inputs);
-    handleClose();
   }
 
   const modal = <Modal onClose={handleClose}>

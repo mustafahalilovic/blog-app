@@ -130,7 +130,7 @@ body{
 }
 
 .blog{
-    max-width: 600px;
+    max-width: 650px;
     background-color: beige;
     padding: 20px;
     border-radius: 5px;
@@ -151,10 +151,9 @@ body{
 
 .comments{
     overflow-y: scroll;
-    max-height: 400px;
-    margin: 20px 0px;
+    max-height: 300px;
+    margin: 10px 0px;
 }
-
 
 .user{
     display: flex;

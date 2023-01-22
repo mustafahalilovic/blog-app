@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  localhost:
+    image: postgres:10.16
+    environment:
+      - POSTGRES_USER: postgres
+      - POSTGRES_PASSWORD: musasamu12341234
+      - POSTGRES_DB: blogapp
+    ports:
+      - '5432:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  api:
+    build: ./server
+    depends_on:
+      - localhost
+    container_name: api_c
+    ports: 
+      - '5000:5000'
+    volumes:
+      - ./server:/app
+      - ./app/node_modules
+  reactapp:
+    build: ./client
+    depends_on:
+      - localhost
+    container_name: reactapp_c
+    port:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+  

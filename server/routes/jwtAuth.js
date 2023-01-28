@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const pool = require('../db');
+const {pool} = require('../db');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('../utils/jwtGenerator');
 const validateInfo = require('../middleware/validateInfo');
@@ -70,7 +70,11 @@ router.post('/login', validateInfo, async(req,res)=>{
 
         // return jwt token
         const token = jwtGenerator(user.rows[0].id);
-        res.json({token});
+        const name = user.rows[0].user_name;
+        res.json({
+            token,
+            name
+        });
         
     } catch (error) {
         console.log(error.message);

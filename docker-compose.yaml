@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:10.16
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=musasamu12341234
+      - POSTGRES_DB=blogapp
+    ports:
+      - '5432:5432'
+    expose:
+      - 5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg-isready"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  api:
+    build: ./server
+    depends_on:
+      - db
+    container_name: api_c
+    ports: 
+      - '5000:5000'
+    volumes:
+      - /app/node_modules
+  reactapp:
+    build: ./client
+    depends_on:
+      - db
+    container_name: reactapp_c
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
